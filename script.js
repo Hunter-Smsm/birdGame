@@ -28,7 +28,7 @@ window.addEventListener("resize", () => {
 });
 
 function handelInteract() {
-    if (player.dy >= 0 && startGame) {
+    if (player.dy >= -3 && startGame) {
         player.dy = -4.2;
     }
     if (!startGame && endGame) {
