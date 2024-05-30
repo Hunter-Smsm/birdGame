@@ -115,6 +115,9 @@ class Block {
         if (this.x + this.w <= 0) {
             this.x = Block.last - canvas.width / 2 + betweenBlocksDistance;
             this.random = getRandomBlock();
+            this.bottomBlockY = canvas.height - this.height + this.random;
+            this.topBlockHeight = this.height + this.random;
+            this.bottomBlockHeight = this.height - this.random;
         }
     }
     gameOver() {
@@ -135,7 +138,7 @@ function init() {
     blocks = [];
     score = 0;
     player = new Player(100, canvas.height / 2, 34, 24);
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 20; i++) {
         blocks.push(
             new Block(
                 Math.ceil(canvas.width / 2 + i * betweenBlocksDistance + 300),
