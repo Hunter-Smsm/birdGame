@@ -151,7 +151,9 @@ init();
 function animate() {
     requestAnimationFrame(animate);
     c.clearRect(0, 0, canvas.width, canvas.height);
-    c.drawImage(bg, 0, 0, innerWidth, innerHeight);
+    for (let i = 0; i < canvas.width / 360; i++) {
+        c.drawImage(bg, i * 360, 0, 360, innerHeight);
+    }
     if (endGame) {
         startGame = false;
         c.font = "30px arial";
