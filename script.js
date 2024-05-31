@@ -29,6 +29,8 @@ window.addEventListener("resize", () => {
 
 function handelInteract() {
     if (player.dy >= -3 && startGame) {
+        let jump = new Audio("./jump.mp3")
+        jump.play()
         player.dy = -4.2;
     }
     if (!startGame && endGame) {
