@@ -29,8 +29,9 @@ window.addEventListener("resize", () => {
 
 function handelInteract() {
     if (player.dy >= -3 && startGame) {
-        let jump = new Audio("./jump.mp3")
-        jump.play()
+        let jump = new Audio("./jump.mp3");
+        jump.volume = 0.1;
+        jump.play();
         player.dy = -4.2;
     }
     if (!startGame && endGame) {
@@ -48,6 +49,7 @@ function handelInteract() {
 
 window.addEventListener("keydown", handelInteract);
 window.addEventListener("touchstart", handelInteract);
+window.addEventListener("mousedown", handelInteract);
 
 function getRandomBlock() {
     return Math.random() * 241 - 120;
@@ -87,7 +89,7 @@ class Block {
         this.topBlockY = 0;
         this.topBlockHeight = this.height + this.random;
         this.bottomBlockHeight = this.height - this.random;
-        this.blockSpeed = -2;
+        this.blockSpeed = -2.5;
         this.player = player;
     }
     draw() {
@@ -131,8 +133,9 @@ class Block {
                     player.y <= this.topBlockHeight))
         ) {
             endGame = true;
-            const wasted = new Audio("./wasted.mp3")
-            wasted.play()
+            const wasted = new Audio("./wasted.mp3");
+            wasted.volume = 0.01;
+            wasted.play();
         }
     }
 }
@@ -141,14 +144,10 @@ function init() {
     player = undefined;
     blocks = [];
     score = 0;
-    player = new Player(100, canvas.height / 2, 34, 24);
+    player = new Player(100, canvas.height / 2, 39, 29);
     for (let i = 0; i < 20; i++) {
         blocks.push(
-            new Block(
-                Math.ceil(canvas.width / 2 + i * betweenBlocksDistance + 300),
-                70,
-                player
-            )
+            new Block(Math.ceil(i * betweenBlocksDistance + 800), 70, player)
         );
         Block.last = Math.ceil(canvas.width / 2 + i * betweenBlocksDistance);
     }
