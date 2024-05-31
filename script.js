@@ -131,6 +131,8 @@ class Block {
                     player.y <= this.topBlockHeight))
         ) {
             endGame = true;
+            const wasted = new Audio("./wasted.mp3")
+            wasted.play()
         }
     }
 }
