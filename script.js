@@ -7,6 +7,8 @@ canvas.height = window.innerHeight;
 
 let startGame = false;
 let endGame = false;
+const wasted = new Audio("./wasted.mp3");
+wasted.volume = 0.01;
 let player = {};
 let blocks = [];
 let score;
@@ -133,8 +135,7 @@ class Block {
                     player.y <= this.topBlockHeight))
         ) {
             endGame = true;
-            const wasted = new Audio("./wasted.mp3");
-            wasted.volume = 0.01;
+            wasted.currentTime = 0;
             wasted.play();
         }
     }
