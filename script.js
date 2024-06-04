@@ -50,7 +50,6 @@ function handelInteract() {
 }
 
 window.addEventListener("keydown", handelInteract);
-window.addEventListener("touchstart", handelInteract);
 window.addEventListener("mousedown", handelInteract);
 
 function getRandomBlock() {
